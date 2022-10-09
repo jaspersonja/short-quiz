@@ -8,33 +8,16 @@
   <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
-  <!-- Div to hold our link to high scores -->
-<div class="score"></div>
-  <!-- Div to hold our timer -->
-<div class="timer"></div>
-  <!-- Wrapper div to hold the rest of the content on our screen -->
+<div class="container">
+  <div id="home" class= "flex-column flex-center">
+    <h1> A Short Quiz! Ready?</h1>
+    <a href="/quiz.html" class="btn">Start</a>
+    <a href="/highscores.html" class="btn">Highscores</a>
 
-    <!-- Div for the start screen -->
-<div class="start">
-    <h3></h3>
-    <p></p>
+
 </div>
-    <!-- Div for the questions -->
-<div class="questions">
-    <h1>JavaScript is ______ Language.</h1><br>
-    <form >
-    <input type="radio" name="choice" value="Scripting"> Scripting
-    <input type="radio" name="choice" value="Programming"> Programming
-    <input type="radio" name="choice" value="Application"> Application
-    <input type="radio" name="choice" value="None of These"> None of These
-    </form>
-    <button onclick="submitAnswer()">Submit Answer</button>
-  
+
 </div>
-    <!-- Div for the end screen -->
-<div class="end"></div>
-    <!-- Div to dynamically display feedback to the user -->
-<div class="feedback"></div>
 
 <script src="./assets/script.js"></script>
 </body>

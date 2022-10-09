@@ -1,0 +1,26 @@
+body{
+    color: white;
+}
+
+.choice-container{
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    background: lightskyblue;
+    font-size: 50px;
+    min-width: 700px;
+}
+
+.choice-container:hover {
+    box-shadow: 10px 5px 5px blue;
+    transform: scale(1.02);
+}
+
+.choice-prefix{
+
+}
+
+
+
+
+@media screen and (max-width: 768px)
