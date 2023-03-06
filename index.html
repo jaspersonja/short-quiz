@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,46 @@
   <title>A Short Quiz</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
 <body>
-<div id="top-container">
-  <div id="timer">
-    <h3>Time: <span id="time">0</span></h3>
+  <!-- timer -->
+  <div id="top-container">
+    <div id="timer">
+      <h3>Time: <span id="time">0</span></h3>
+    </div>
   </div>
-</div>
+  <!-- home screen -->
+  <div class="container">
+    <div id="home" class="flex-column flex-center">
+      <h1> A Short Quiz! Ready?</h1>
+      <button id='start' class="btn">Start</button>
+      <a href="./highscores.html" class="btn">Highscores</a>
 
-<div class="container">
-  <div id="home" class= "flex-column flex-center">
-    <h1> A Short Quiz! Ready?</h1>
-    <button id = 'start' class="btn">Start</button>
-    <a href="./highscores.html" class="btn">Highscores</a>
+    </div>
 
+    <!-- questions -->
+    <div id="questions" class="hide">
+      <h2 id="question-title"></h2>
+      <div id="choices" class="choices"></div>
+    </div>
 
-</div>
+    <!-- results screen -->
+    <div id="results" class="hide">
+      <h2>Finished!</h2>
+      <p>Your score is: <span id="final-score"></span>
+      </p>
+      <p>
+        Enter your initials: <input type="text" id="intials" />
+        <button id="submit">Submit</button>
+      </p>
+    </div>
 
-</div>
+    <!-- answer feedback -->
+    <div id="feedback" class="hide feedback"></div>
 
-<script src="./assets/script.js"></script>
+  </div>
+
+  <script src="./assets/script.js"></script>
 </body>
+
 </html>
