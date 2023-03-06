@@ -1,13 +1,75 @@
 const questionsEl = document.getElementById('questions');
 const timerEl = document.getElementById('time');
 const choicesEl = document.getElementById('choices');
-const submitBtn = document.getElementById('submit');
-const startBtn = document.getElementById('start');
+const submitButton = document.getElementById('submit');
+const startButton = document.getElementById('start');
 const initialsEl = document.getElementById('initials');
 const feedbackEl = document.getElementById('feedback');
 
+let timerId;
+const time = questions.length * 10;
+const questionIndex = 0;
 
+//timer
+function timerCountdown() {
+    time --;
+    timerEl.textContent = time;
 
+    if (time <= 0) {
+        endQuiz();
+    }
+};
+
+//Start quiz
+function startQuiz() {
+    const homeScreenEl = document.getElementById('home')
+    homeScreenEl.setAttribute('class', 'hide')
+
+    questionsEl.removeAttribute('class');
+
+    timerId = setInterval(timerCountdown, 1000);
+
+    timerEl.textContent = time;
+    getQuestion();
+}
+
+//get questions
+function getQuestion() {
+    const currentQuestion = questions[questionIndex];
+    
+    const titleEl = document.getElementById('question-title')
+    titleEl.textContent = currentQuestion.title;
+
+    choicesEl.innerHTML = '';
+    
+    for( let i = 0; i < currentQuestion.choices.length; i++) {
+        let choice = currentQuestion.choices[i];
+        let choiceButton = document.createElement('button');
+        choiceButton.setAttribute('class', 'choice')
+        choiceButton.setAttribute('value', choice)
+         
+        choiceButton.textContent = choice;
+        choicesEl.appendChild(choiceButton);
+    }
+}
+
+//end quiz
+function endQuiz() {
+
+}
+
+//choice click
+function choiceClick() {
+
+}
+
+//save highscore
+
+function saveHighscore() {
+    
+}
+
+// questions array
 const questions = [
     {
       title: 'Given the year 1918, when did World War 1 end?',
