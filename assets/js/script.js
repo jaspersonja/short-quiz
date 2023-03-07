@@ -1,14 +1,14 @@
 const questionsEl = document.getElementById('questions');
 const timerEl = document.getElementById('time');
 const choicesEl = document.getElementById('choices');
-const submitButton = document.getElementById('submit');
-const startButton = document.getElementById('start');
 const initialsEl = document.getElementById('initials');
 const feedbackEl = document.getElementById('feedback');
+const startButton = document.getElementById('start');
+const submitButton = document.getElementById('submit');
 
 let timerId;
-const time = questions.length * 10;
-const questionIndex = 0;
+let time = 60;
+let questionIndex = 0;
 
 //timer
 function timerCountdown() {
@@ -55,19 +55,81 @@ function getQuestion() {
 
 //end quiz
 function endQuiz() {
+  clearInterval(timerId);
 
+  let resultsEl = document.getElementById('results');
+  resultsEl.removeAttribute('class');
+
+  let finalScoreEl = document.getElementById('final-score');
+  finalScoreEl.textContent = time;
+
+  questionsEl.setAttribute('class', 'hide');
 }
 
 //choice click
-function choiceClick() {
+function choiceClick(event) {
+  const buttonEl = event.target;
 
+  if(!buttonEl.matches('.choice')) {
+    return;
+  }
+  if (buttonEl.value !== questions[questionIndex].answer) {
+    time -= 5;
+
+    if (time < 0) {
+      time = 0;
+    }
+
+    timerEl.textContent = time;
+
+
+    feedbackEl.textContent = 'INCORRECT';
+  } else {
+
+    feedbackEl.textContent = 'GREAT JOB!';
+  }
+
+  feedbackEl.setAttribute('class', 'feedback');
+  setTimeout(function () {
+    feedbackEl.setAttribute('class', 'feedback hide');
+  }, 2000);
+
+  questionIndex++;
+
+  if (time <= 0 || questionIndex === questions.length) {
+    endQuiz();
+  } else {
+    getQuestion();
+  }
 }
 
 //save highscore
-
 function saveHighscore() {
-    
+
+  const initials = initialsEl.value.trim();
+
+  if (initials !== '') {
+
+    const highscores =
+      JSON.parse(window.localStorage.getItem('highscores')) || [];
+
+    const newScore = {
+      score: time,
+      initials: initials,
+    };
+
+    highscores.push(newScore);
+    window.localStorage.setItem('highscores', JSON.stringify(highscores));
+
+    window.location.href = 'highscores.html';
+  }
 }
+
+submitButton.onclick = saveHighscore;
+
+startButton.onclick = startQuiz;
+
+choicesEl.onclick = choiceClick;
 
 // questions array
 const questions = [

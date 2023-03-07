@@ -17,7 +17,8 @@ h1{
 }
 
 h2{
-    font-size: 2.5rem;
+    color: white;
+    font-size: 4rem;
     margin-bottom: 20px;
 }
 
@@ -50,8 +51,9 @@ justify-content: center;
     text-align: center;
 }
 
-.hidden{
-    display: none;
+.feedback {
+    color: white;
+    font-size: 30px;
 }
 
 .btn{
@@ -82,4 +84,23 @@ justify-content: center;
     color: white;
     font-size: 5rem;
     
+}
+
+.hide {
+    display:none;
+}
+
+.choices {
+    font-size: 30px;
+    padding: 10px;    
+}
+
+p {
+    color: white;
+    font-size: 30px;
+}
+
+ol {
+    color: white;
+    font-size: 30px;
 }
